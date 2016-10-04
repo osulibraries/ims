@@ -1,0 +1,6 @@
+<%= form_tag(bulk_trash_items_path, class: "batch-select-all hidden button_to-inline", "data-behavior" => 'batch-select-all') do -%>
+    <%= hidden_field_tag('update_type', 'delete_all') %>
+    <%= hidden_field_tag('return_controller', params[:controller]) %>
+    <%= submit_tag("Move to Trash", class: 'batch-all-button btn btn-danger submits-batches',
+                   data: { confirm: "Are you sure?" }) %>
+<% end %>

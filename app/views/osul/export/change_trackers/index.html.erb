@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Ids of Tracked Changes</h1>
+
+<table class='table table-striped'>
+  <thead>
+    <tr>
+      <th>Fid</th>
+      <th>Type</th>
+      <th>User</th>
+      <th>DateTime</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @export_change_trackers.each do |export_change_tracker| %>
+      <tr>
+        <td><%= export_change_tracker.fid %></td>
+        <td><%= export_change_tracker.object_type %></td>
+        <td><%= export_change_tracker.user_id %></td>
+        <td><%= export_change_tracker.created_at.to_formatted_s(:rfc822) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

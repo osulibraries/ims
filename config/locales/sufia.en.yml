@@ -1,0 +1,86 @@
+en:
+  simple_form:
+    labels:
+      generic_file:
+        resource_type: "Type"
+        abstract: "Abstract or Summary"
+        description: "Notes"
+        bibliographic_citation: 'Published in'
+        date_created: 'Date'
+        work_type: 'Genre'
+        temporal: 'Time period'
+        source: 'Call number'
+        part_of: "Sub-Collection"
+        spatial: "Place"
+    metadata_help:
+      generic_file:
+        description: "Publically available notes"
+        abstract: "Free-text notes about the file itself. Examples include abstracts of a paper, citation information for a journal article, or a tag indicating a larger collection to which the file belongs."
+        based_near: "The geographic location or name of the repository building site or other entity, whose boundaries include the work or image (based near)."
+        spatial: "A place name related to the file, such as its site of publication, or the city, state, or country the file's contents are about. Calls upon the GeoNames web service (http://www.geonames.org - spatial)."
+  sufia:
+    about_intro: "What are the"
+    product_name:       "Image Collections"
+    product_twitter_handle: "@HydraSphere"
+    institution_name:   "Ohio State"
+    institution_name_full: "The Ohio State University"
+    visibility:
+      open: "Public"
+    search:
+      form:
+        q:
+          label:          "Search Image Collections"
+          placeholder:    "Enter search terms"
+        option:
+          all:
+            label_short:  "All"
+            label_long:   "All Image Collections"
+          my_files:
+            label_short:  "My Files"
+            label_long:   "My Files"
+          my_collections:
+            label_short:  "My Private Collections"
+            label_long:   "My Private Collections"
+          my_admin_sets:
+            label_short: "My Collections"
+            label_long: "My Collections"  
+          my_highlights:
+            label_short:  "My Highlights"
+            label_long:   "My Highlights"
+          my_shares:
+            label_short:  "My Shares"
+            label_long:   "My Shares"
+    dashboard:
+      title:                    "My Dashboard"
+      greeting:                 "Hello, "
+      upload:                   "Upload"
+      create_collection:        "Create Private Collection"
+      view_collections:         "View Private Collections"
+      view_admin_collections:   "View Collections"
+      view_files:               "View Files"
+      user_activity:            "User Activity"
+      no_activity:              "User has no recent activity"
+      user_notiticiations:      "User Notifications"
+      no_notifications:         "User has no notifications"
+      additional_notifications: "See all notifications"
+      proxy_activity:           "Proxy Activity"
+      transfer_of_ownership:    "Transfer of Ownership"
+      transfer_files_link:      "Select files to transfer"
+      no_transfer_requests:     "You haven't received any file transfer requests"
+      no_transfers:             "You haven't transferred any files"
+      my:
+        files:           "My Files"
+        collections:     "My Private Collections"
+        admin_sets:      "My Collections"
+        trashed_items:   "Trashed Items"
+        highlights:      "My Highlights"
+        shares:          "Files Shared with Me"
+        facet_label:
+          files:        "Filter your files"
+          collections:  "Filter your collections"
+          highlighted: "Filter your highlights"
+          shared:      "Filter your shares"
+    file:
+      admin_sets_list:
+        heading:   "This file is in the following collection:"
+        empty:     "This file is not currently in any collection."

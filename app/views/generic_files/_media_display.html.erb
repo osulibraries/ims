@@ -1,0 +1,36 @@
+<% if @generic_file.image? %>
+
+  <%# "@generic_file.id + '-' + @generic_file.content.latest_version.label" the version label is being %>
+  <%# added to the id in order to bust the cache in riiif whenever a new version of the file is uploaded. %>
+  <%= openseadragon_picture_tag( ENV['LORIS_SERVER_URI'] + @generic_file.latest_version_id ) %>
+
+<% elsif @generic_file.video? %>
+
+  <video controls="controls" class="video-js vjs-default-skin" data-setup="{}" preload="auto">
+    <source src="<%= sufia.download_path(@generic_file, file: 'webm') %>" type="video/webm" />
+    <source src="<%= sufia.download_path(@generic_file, file: 'mp4') %>" type="video/mp4" />
+    Your browser does not support the video tag.
+  </video>
+
+<% elsif @generic_file.audio? %>
+
+  <audio controls="controls" class="audiojs" preload="auto">
+    <source src="<%= sufia.download_path(@generic_file, file: 'ogg') %>" type="audio/ogg" />
+    <source src="<%= sufia.download_path(@generic_file, file: 'mp3') %>" type="audio/mpeg" />
+    Your browser does not support the audio tag.
+  </audio>
+
+<% elsif @generic_file.pdf? %>
+
+  <%= display_non_image %>
+  <%#= render_download_icon "Download the full-sized PDF" %>
+
+<% elsif @generic_file.office_document? %>
+  <%= display_non_image %>
+    <%#= render_download_icon "Download the full-sized Document" %>
+
+<% else %>
+
+  <%= openseadragon_picture_tag( ENV['LORIS_SERVER_URI'] + @generic_file.latest_version_id ) %>
+
+<% end %>

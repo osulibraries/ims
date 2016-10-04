@@ -1,0 +1,9 @@
+<div class="col-xs-12 col-sm-5">
+<%= bootstrap_form_for @role, :url=>roles_path do |f| %>
+  <%= render partial: 'edit_fields', :locals => {f: f} %>
+
+
+  <%= f.submit "Add" %>
+  <%= link_to "Cancel", roles_path, :class => 'btn btn-default' %>
+<% end %>
+</div>

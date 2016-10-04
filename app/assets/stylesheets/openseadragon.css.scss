@@ -1,0 +1,16 @@
+/*
+ *= require openseadragon/openseadragon
+ */
+
+.openseadragon-viewer {
+  position: relative;
+}
+
+.osd-loading {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: image-url('loading.gif') no-repeat scroll center center;
+}

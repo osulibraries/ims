@@ -1,0 +1,23 @@
+// Place all the styles related to the Imports controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.file-browser {
+  height: 250px;
+  border-top: solid 1px #BBB;
+  border-left: solid 1px #BBB;
+  border-bottom: solid 1px #FFF;
+  border-right: solid 1px #FFF;
+  background: #FFF;
+  overflow: scroll;
+  padding: 5px;
+}
+
+.progress-property .progress-wrapper {
+  display: table-cell;
+  min-width: 300px;
+}
+
+.progress-property .progress-wrapper .progress {
+  margin-bottom: 0;
+}

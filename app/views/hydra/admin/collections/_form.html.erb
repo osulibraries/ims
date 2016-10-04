@@ -1,0 +1,39 @@
+<%= simple_form_for @collection, url: form_url do |f| %>
+    <% if @collection.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@collection.errors.count, "error") %> prohibited this topic from being saved:</h2>
+
+          <ul>
+            <% @collection.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+
+    <div class="well">
+      <div class="form-group">
+        <%= f.input :title, :input_html => {:class => 'form-control'} %>
+      </div>
+      <div class="form-group">
+        <%= f.input :description, :input_html => {:class => 'form-control'} %>
+      </div>
+      <div class="form-group">
+        <%= f.label :unit %>
+        <%= f.select :unit, options_for_select(current_user.units.each.collect{|g| [g.name, g.key] }, @collection.unit), {prompt: 'Please select a unit', label: 'Unit'}, {required: true, :class => 'form-control'} %>
+      </div>
+    </div>
+
+
+      <%= render partial: 'permission_form', locals: {collection: @collection, f: f} %>
+
+
+    <div class=" actions">
+      <%= f.submit "Save", class: 'btn btn-primary' %>
+      <%= link_to "Cancel", :back, {:class => "btn btn-default"} %>
+    </div>
+
+
+<% end %>
+

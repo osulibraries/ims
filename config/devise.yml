@@ -1,0 +1,9 @@
+# Generate a secret using this command:
+#   rake secret
+
+development:
+  secret_key: 'XXXX'
+test:
+  secret_key: 'XXXX'
+production:
+  secret_key:

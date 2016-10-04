@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Image Collections - Ohio State University Libraries</title>
+    <%= javascript_include_tag 'application', 'creative.js', 'jquery.easing.min.js', 'jquery.fittext.js', 'wow.min.js', 'bootstrap.js' %>
+    <%= stylesheet_link_tag 'application', 'creative.css' %>
+
+
+  </head>
+
+  <body id="page-top" class='full-width'>
+
+
+
+    <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
+      <div class="container-fluid">
+        <%= render 'osul-theme/osu_navbar_bootstrap' %>
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand page-scroll osul-white-logo hidden-xs" href="#page-top"><%= image_tag 'logo-white.png' %></a>
+          <a class="navbar-brand page-scroll osul-black-logo" href="#page-top"><%= image_tag 'logo-black.png' %></a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav navbar-right">
+             <li>
+              <a class="page-scroll" href="#services">Collections</a>
+            </li>
+          <!--  <li>
+              <a class="page-scroll" href="#featured">Recent</a>
+            </li> -->
+            <li>
+              <!-- <a class="page-scroll" href="#about">About</a> -->
+              <%= link_to 'About', sufia.about_path %>
+            </li>
+            <li>
+              <%= link_to 'Staff Login', new_user_session_path(auth: 'shibboleth') %>
+            </li>
+          </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+      </div>
+      <!-- /.container-fluid -->
+    </nav>
+
+    <header class="home-page-header">
+    <div class="header-content">
+      <div class="header-content-inner">
+        <h1 style='font-weight: 200' class="lead">Image Collections</h1>
+        <hr>
+<!-- 
+
+  <!--       <div class="row">
+          <div class="col-md-12">
+             <p class="bg-info">The Cartoons Image Database (https://cartoonimages.osu.edu/) and the images of the Byrd Polar Research Center Archival Program (https://byrdpolarmedia.osu.edu/) have a new website. 
+        Unfortunately, the content is temporarily unavailable to the public.<br />
+        If you require access to these items, please contact: <br />
+            <br />
+         
+              Cartoons Image Database<br/>
+                  <a href="https://cartoons.osu.edu">Billy Ireland Cartoon Library & Museum</a><br/>
+                  <a href="mailto:cartoons@osu.edu">cartoons@osu.edu</a> 
+                  <br />
+                  <br />
+              Byrd Polar Research Center Images<br/>
+                  <a href="https://library.osu.edu/find/collections/byrd-polar-archives">Byrd Polar and Climate Research Center Archival Program</a><br/>
+                <a href="mailto:PolarArchives@osu.edu">PolarArchives@osu.edu
+                  <br />
+          </p>
+        </div> -->
+
+        
+        
+        <%= form_tag "#{request.original_url}/catalog", method: :get do %>
+          <div class="form-group">
+            <%= text_field_tag :q, nil, { placeholder: "Search the University Libraries Image Collections", class: 'form-control' } %>
+          </div>
+          <%= submit_tag 'search', class: 'btn btn-primary btn-xl' %>
+        <% end %>
+      </div>
+    </div>
+    </header>
+
+
+    <section id="services" class='bg-primary'>
+      <div class="container">
+        <div class="row">
+
+          <div class="col-md-6 text-center">
+            <div class="service-box">
+              <h3>
+                <a href="<%= catalog_index_path 'f[unit_tesim][]' => 'billyirelandcartoonlibrarymuseum' %> ">
+                  Billy Ireland Cartoon<br />Library &amp; Museum
+                </a>
+              </h3>
+              <br />
+              <a href='<%= catalog_index_path 'f[unit_tesim][]'=> 'billyirelandcartoonlibrarymuseum' %>'>
+                <%= image_tag 'cartoons-collection.jpg' %>
+              </a>
+            </div>
+          </div>
+
+          <div class="col-md-6 text-center">
+            <div class="service-box">
+              <h3>
+                <a href="<%= catalog_index_path 'f[unit_tesim][]' => 'byrdpolarresearchcenterarchivalprogram' %> ">
+                  Byrd Polar and Climate Research<br />Center Archival Program
+                </a>
+              </h3>
+              <br />
+              <a href='<%= catalog_index_path 'f[unit_tesim][]'=> 'byrdpolarresearchcenterarchivalprogram' %>'>
+                <%= image_tag 'byrd-collection.jpg' %>
+              </a>
+              <br />
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+    <section class="" id="featured" style='display:none;'>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12 text-center">
+            <br />
+            <h2 class="section-heading">Coming Soon to Image Collections...</h2>
+            <hr class="primary">
+          </div>
+        </div>
+      </div>
+      <div class="container-fluid">
+        <!-- <div class="row no-gutter"> -->
+        <div class="row">
+          <div class="col-lg-12 text-center">
+            <h2 class="section-heading">Recently Added</h2>
+          </div>
+         <!--  <div class="col-lg-4 col-sm-6">
+            <a href="#" class="featured-box">
+              <%#= image_tag 'byrdartifact-464_3.jpg', class: 'img-responsive' %>
+              <div class="featured-box-caption">
+                <div class="featured-box-caption-content">
+                  <div class="project-category text-faded">
+                    Artwork in the Richard E. Byrd Papers
+                  </div>
+                  <div class="project-name">
+                    Moutains and Trees
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="col-lg-4 col-sm-6">
+            <a href="#" class="featured-box">
+              <%#= image_tag 'jackie-gleason.jpg', class: 'img-responsive' %>
+              <div class="featured-box-caption">
+                <div class="featured-box-caption-content">
+                  <div class="project-category text-faded">
+                    Ronald Searle Collection
+                  </div>
+                  <div class="project-name">
+                    Jackie Gleason
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="col-lg-4 col-sm-6">
+            <a href="#" class="featured-box">
+              <%#= image_tag 'byrdartifact-461_5.jpg', class: 'img-responsive' %>
+              <div class="featured-box-caption">
+                <div class="featured-box-caption-content">
+                  <div class="project-category text-faded">
+                    Artwork in the Richard E. Byrd Papers
+                  </div>
+                  <div class="project-name">
+                    Harbor Boats painting
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>-->       
+        </div>
+       </div>
+    </section>
+<section>
+<div class='col-md-12'>
+<footer id="footer-row" class="row osu-footer">
+  <div id="footer-column">
+  <div id="footer-logo">
+
+    <a class="osu-wordmark" href="http://library.osu.edu/" title="Ohio State University Libraries">The
+      Ohio State University Libraries</a>
+  </div>
+  <div id="osu-copyright">
+    <p>&copy; <%= Time.now.year %> The Ohio State University - <a href="http://library.osu.edu/">University Libraries</a></p>
+  </div>
+
+  <address id="osu-address">
+    <p>1858 Neil Avenue Mall, Columbus, OH 43210</p>
+    <p>Phone: (614) 292-OSUL (6785) | Fax: (614) 292-9101</p>
+    <p class="pull-right"><a title="To the top" class="tothetop" href="#top">Up <span class="glyphicon glyphicon-arrow-up"></span></a></p>
+    <p>If you have trouble accessing this page and need to request an alternate format, contact <a href="http://library.osu.edu/about/contact-us/webmaster-mail">the webmaster</a>.</p>
+  </address>
+
+</div>
+</footer>
+</div>
+</section>
+
+  </body>
+</html>

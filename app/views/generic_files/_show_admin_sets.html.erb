@@ -1,0 +1,14 @@
+<% if @generic_file.collection.present? %>
+  <h2 class="non lower"><%= t('admin_set_name') %></h2>
+
+  <p><%= t('sufia.file.admin_sets_list.heading') %></p>
+  <table class="table table-striped">
+    <tbody>
+    <tr class="collection attributes">
+      <%= content_tag :td, class: 'attribute title', data: { noid: @generic_file.collection.pid } do %>
+          <%= link_to @generic_file.collection.title, hydra_admin_collection_path(@generic_file.collection.pid) %>
+      <% end %>
+    </tr>
+    </tbody>
+  </table>
+<% end %>

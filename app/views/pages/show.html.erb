@@ -1,0 +1,5 @@
+<h1>About</h1> 
+<h2><%= t('sufia.about_intro')%> <%=t('sufia.product_name') %>?</h2>
+<%= editable_content_block @page %>
+<%= tiny_mce_stuff if can? :update, ContentBlock%>
+

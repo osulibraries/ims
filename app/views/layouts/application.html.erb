@@ -1,0 +1,115 @@
+<% @full_width = true %>
+<% @custom_flash_messages = true %>
+<% content_for :title do %><%= t('sufia.product_name') %><% end %>
+  
+<!-- <%# content_for :header_color do %>light<%# end %>  -->
+<% content_for :header_image do %>header-image-my-custom<% end %>
+
+<% content_for :navbar do %>
+    <%= navbar container: 'fluid' do %>
+        <%= navbar_header brand: '' %>
+        <%= navbar_collapse do %>
+            <%= navbar_group class: 'col-md-4 foo', id: 'menu' do %>
+                <%#= navbar_text 'Pick an option:' %>
+                <%= navbar_item root_path do %>
+                  Home
+                <% end %>
+                <%= navbar_item sufia.about_path do %>
+                  About
+                <% end %>
+                <%#= navbar_item root_path + "help" do %>
+                  <!-- Help -->
+                <%# end %>
+                <%#= navbar_item sufia.contact_path do %>
+                <%# end %>
+
+                <%#= navbar_item '#', class: "navbar-unlink osul-user-links" do %>
+
+                <%# end %>
+            <% end %>
+
+            <%= navbar_group align: 'right', class: 'col-md-8' do %>
+                
+                <div class="col-xs-12 col-sm-7 col-md-8">
+                    <%= render partial: 'catalog/search_form' %>
+                </div>
+                <div class="osul-user-links col-md-4">
+                  <%= render partial: '/user_util_links' %>  
+                </div>
+            <% end %>
+
+        <% end %>
+    <% end %>
+<% end %>
+
+<%= header do %>
+  <link href='https://fonts.googleapis.com/css?family=Lato:300,400' rel='stylesheet' type='text/css'>
+  <meta charset="utf-8" />
+
+  <!-- added for use on small devices like phones -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <!-- Twitter card metadata -->
+  <%= yield :twitter_meta %>
+  <!-- Google Scholar metadata -->
+  <%= yield :gscholar_meta %>
+
+  <title><%= h(@page_title || application_name) %></title>
+
+  <!-- application css -->
+  <%#= stylesheet_link_tag 'application' %>
+
+  <!-- application js -->
+  <%#= javascript_include_tag 'application' %>
+
+  <!-- Google Analytics -->
+  <%= render partial: '/ga', formats: [:html] %>
+
+  <!-- for extras, e.g., a favicon -->
+  <%= render partial: '/head_tag_extras', formats: [:html] %>
+  <script>
+    <% app_path = "#{root_path}" %>
+    <% (app_path.last ==  "/") ? app_path : app_path += "/" %>
+    APP_PATH =  "<%= app_path %>" 
+  </script>
+<% end %>
+<%= render partial: '/flash_msg' %>
+
+
+  <div class="container-fluid">
+    <div id="page-positioner">
+
+      <% if defined? use_dashboard %>
+        <div id="content-wrapper" class="dashboard">
+          <div class="container-fluid">
+            <div id="content-header" class="row"><%= yield :heading %></div>
+          </div>
+          <div class="container-fluid">
+            <div id="content" class="row">
+              <div id="sidebar" class="col-xs-12 col-sm-3"><%= yield :sidebar %></div>
+              <div class="col-xs-12 col-sm-9"><%= yield %></div>
+            </div>
+          </div>
+        </div>
+      <% elsif defined? use_two_columns %>
+        <div id="content-wrapper" class="container-fluid">
+          <div class="row">
+            <div id="sidebar" class="col-xs-12 col-sm-3">
+              <%= yield :sidebar %>
+            </div>
+            <div id="content" class="col-xs-12 col-sm-9">
+              <%= yield %>
+            </div>
+          </div><!-- /#content -->
+        </div><!-- /#content-wrapper -->
+      <% else %>
+        <%= yield %>
+      <% end %>
+
+
+    </div>
+  </div>
+  <%= render 'shared/ajax_modal' %>
+
+<%= footer %>
+

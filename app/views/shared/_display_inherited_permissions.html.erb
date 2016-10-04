@@ -1,0 +1,22 @@
+<% if f.object.admin_policy.present? %>
+
+  <table class="table table-bordered table-inherited-permissions">
+    <tr><th colspan="2"><strong>Inherited Permissions</strong></th></tr>
+    <tr>
+      <th width="60%">Person/Group</th>
+      <th width="40%">Access Level</th>
+    </tr>
+    <% f.object.admin_policy.default_permissions.each do |permission| %>
+      <%# skip the public, penn state (aka registered), and depositor perms as they are displayed first at the top %>
+      <% next if ['public', 'registered'].include? permission.agent_name.downcase %>
+      <tr>
+        <td>
+          <%= user_display_name_and_key(permission.agent_name) %>
+        </td>
+        <td>
+          <%=  Sufia.config.permission_levels.key(permission.access) %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+<% end %>

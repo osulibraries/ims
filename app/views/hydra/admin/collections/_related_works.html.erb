@@ -1,0 +1,24 @@
+<% if curation_concern.members.present? %>
+<table class="table table-striped <%= dom_class(curation_concern) %> related-to-works with-headroom">
+  <caption class="table-heading">
+    <h2>Works</h2>
+    <p>Works that are related to this <%= curation_concern.human_readable_type %>.</p>
+  </caption>
+  <% if curation_concern.members.present? %>
+    <thead>
+    <tr>
+      <th>Work Title</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% curation_concern.members.each do |member| %>
+    <%= member.inspect %>
+      <tr class="referenced_by_works attributes">
+        <td class="attribute title"><%= link_to member.title.first, sufia.generic_file_path(member) %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  <% end %>
+</table>
+
+<% end %>

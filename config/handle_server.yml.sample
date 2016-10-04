@@ -1,0 +1,14 @@
+default: &default
+  mint: false
+
+development:
+  <<: *default
+
+test:
+  <<: *default
+
+production:
+  prefix: 1234
+  index: 300
+  admin_priv_key: "/path/to/the/admpriv.bin"
+  url: "http://library.osu.edu/ims/"

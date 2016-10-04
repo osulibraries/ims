@@ -1,0 +1,8 @@
+<% objs.each do |obj| %>
+  <div class="fields">
+    <dt><%= obj.humanize.capitalize %></dt>
+    <dd>
+      <%= @presenter.model.send(obj).each.collect { |m| m.display_terms }.join(', ') %>
+    </dd>
+  </div>
+<% end %>

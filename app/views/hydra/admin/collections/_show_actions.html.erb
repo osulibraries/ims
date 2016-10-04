@@ -1,0 +1,7 @@
+<h2 class="sr-only">Actions</h2>
+<div class="actions-controls-collections">
+  <% if can? :edit, @collection %>
+      <span class="label label-default"><%= link_to "Edit", edit_hydra_admin_collection_path(collection.pid), title: "Edit this <%= t('admin_set_name') %>" %></span> &nbsp;&nbsp;
+      <span class="label label-default"><%= link_to "Add files",  sufia.dashboard_files_path, title: "Add files to this <%= t('admin_set_name') %>" %></span>
+  <%end %>
+</div>

@@ -1,0 +1,29 @@
+<h1>Listing import_field_mappings</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Import</th>
+      <th>Key</th>
+      <th>Value</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @import_field_mappings.each do |import_field_mapping| %>
+      <tr>
+        <td><%= import_field_mapping.import %></td>
+        <td><%= import_field_mapping.key %></td>
+        <td><%= import_field_mapping.value %></td>
+        <td><%= link_to 'Show', import_field_mapping %></td>
+        <td><%= link_to 'Edit', edit_import_field_mapping_path(import_field_mapping) %></td>
+        <td><%= link_to 'Destroy', import_field_mapping, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Import field mapping', new_import_field_mapping_path %>

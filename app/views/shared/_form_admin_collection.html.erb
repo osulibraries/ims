@@ -1,0 +1,15 @@
+<%# if can? :create, Hydra::Admin::Collection %>
+  <% admin_sets = Hydra::Admin::Collection.all %>
+    <%#= abort f.inspect %>
+    <h2><%= t('admin_set_name') %></h2>
+    <div id="" class="well">
+      <div class="row">
+        <div class="col-sm-8">
+          <%= f.select :collection_id, current_user.admin_sets.collect {|p| [ p.title, p.pid ] }, {}, { "aria-label" => "Institutional Collection select box" } %>
+        </div>
+
+        <div class="col-sm-4">
+        </div>
+      </div>
+    </div>
+<%# end %>

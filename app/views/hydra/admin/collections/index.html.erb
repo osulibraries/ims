@@ -1,0 +1,42 @@
+<div class="row">
+  <div class="col-md-6">
+    <h1><%= t('admin_set_name') %>s</h1>  
+  </div>
+  
+  <div class="col-md-6">
+
+    <%= link_to new_hydra_admin_collection_path, :class => 'btn btn-success pull-right' do %>
+      <span class="glyphicon glyphicon-plus"></span> New
+    <% end %>
+  </div>
+  
+</div>
+
+<div id="Data">
+  <table id="admin-sets-list" class="table table-striped">
+    <thead>
+    <tr>
+      <th>Set Name</th>
+      <th>Unit</th>
+      <th>Total Items</th>
+      <th>Visibility</th>
+      <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @collections.each do |collection| %>
+      <% if can? :edit, collection %>
+
+        <tr class="<%= cycle("","zebra") %>">
+          <td><%= link_to collection.title, hydra_admin_collection_path(collection.id) %></td>
+          <td><%= collection.unit_display_name %></td>
+          <td><%= collection.members.count %></td>
+          <td><%= render_visibility_label collection %></td>
+          <td><%= render partial:'my/admin_set_action_menu', locals:{noid:collection.id}%></td>
+        </tr>
+      <% end %>
+    <% end %>
+    </tbody>
+  </table>
+</div>
+

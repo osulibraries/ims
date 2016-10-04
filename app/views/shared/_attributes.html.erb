@@ -1,0 +1,19 @@
+      <table class="table">
+        <tr>
+          <th><span class="attribute-label h4">Title:</span></th>
+          <td><%= work.title %></td>
+        </tr>
+        <tr>
+          <th><span class="attribute-label h4">Creator:</span></th>
+          <td><%= work.creator %></td>
+        </tr>
+        <tr>
+          <th><span class="attribute-label h4">Identifier:</span></th>
+          <td><%= Array(work[Solrizer.solr_name('identifier')]).first %></th>
+        </tr>
+        <tr>
+          <th><span class="attribute-label h4">Date Created:</span></th>
+          <td><%= Array(work[Solrizer.solr_name('date_created')]).first %></td>
+        </tr>
+      </table>
+

@@ -1,0 +1,17 @@
+<div class="well">
+<h4>Preservation Level</h4>
+<div class="form-inline">
+    <%= f.fields_for :preservation_level do |fields| %>
+
+        <div class="form-group">
+          <%= fields.input :value, as: :select, collection: Sufia.config.preservation_values,
+    input_html: { class: 'form-control', multiple: false }, include_blank: "-- Select Value --" %>
+        </div>
+        <div class="form-group">
+          <%= fields.label :date_assigned %>
+          <%= fields.text_field :date_assigned, class: "form-control"  %>
+        </div>
+
+    <% end %>
+</div>
+</div>

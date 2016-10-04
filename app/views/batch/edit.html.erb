@@ -1,0 +1,29 @@
+<%#= javascript_include_tag 'osul_batch' %>
+<%= javascript_tag do %>
+    <%= render partial: "edit", formats: [:js] %>
+<% end %>
+
+<h1>Apply Metadata</h1>
+<p>
+  The information you provide for Title will be applied to the corresponding file only; however all other
+  information you provide will be applied <em>to the entire batch of files</em> you have just
+  deposited into <%= t('sufia.product_name') %>. You may edit individual files from
+  <%= link_to "<i class='glyphicon glyphicon-dashboard'></i> #{t('sufia.bread_crumb.file_list')}".html_safe, sufia.dashboard_files_path %>
+  once this step is finished. <span class="required-field">*</span> indicates required fields.
+</p>
+<!-- OLD SUFIA (Fedora 3 version) -->
+<%#= form_for([@batch, @generic_file], url: sufia.batch_generic_files_path, html: { multipart: true, class: 'form-horizontal' }) do |f| %>
+
+<!-- NEW SUFIA (FEDORA 4 version) -->
+<%= simple_form_for [sufia, @batch, @form], html: { multipart: true }, builder: Sufia::FormBuilder do |f| %>
+    <%= render partial: 'shared/form_admin_collection', formats: [:html], locals: {f: f} %>
+    <%= render partial: 'metadata', formats: [:html], locals: {f: f} %>
+
+    <%= render partial: 'generic_files/permission_form', formats: [:html], locals: {f: f,  batch: @batch } %> <!-- Use to have gf: @generic_file, as well -->
+
+    <div class="row" id="permissions_submit">
+      <%= button_tag '<i class="glyphicon glyphicon-floppy-disk"></i> Save'.html_safe, type: 'submit', class: 'btn btn-primary btn-lg',
+                     onclick: "confirmation_needed = false;", id: "upload_submit", name: "update_permission" %>
+    </div>
+
+<% end %>

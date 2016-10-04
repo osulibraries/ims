@@ -1,0 +1,3 @@
+<% record.part_of.each do |r| %>
+  <%= link_to_facet(r, Solrizer.solr_name("sub_collection", :facetable)) %><br />
+<% end %>

@@ -1,0 +1,3 @@
+<strong>Groups:</strong> <%= @user.osul_groups.each.collect {|g| g.name}.sort.join(', ') %>
+<br />
+<strong>Role: </strong> <%= @user.role.name unless @user.role.nil? %>

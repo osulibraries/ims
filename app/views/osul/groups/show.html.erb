@@ -1,0 +1,35 @@
+<script type="text/javascript">
+  
+</script>
+<%= content_for :sidebar do %>
+    <h1><%= t('user_group') %></h1><%= link_to 'Edit', edit_osul_group_path(@group), :class => 'btn btn-primary' %>
+    <%= link_to 'Back', osul_groups_path, :class => 'btn btn-default' %>
+<% end %>
+<div class="col-xs-12">
+  <dl id="user_info" class="row">
+    <dt class="col-xs-2">Name:</dt>
+    <dd class="col-xs-10"><%= @group.name %></dd>
+
+
+    <dt class="col-xs-2">Description:</dt>
+    <dd class="col-xs-10"><%= @group.description %>&nbsp;</dd>
+
+    <dt class="col-xs-2">Unit:</dt>
+    <dd class="col-xs-10"><%= @group.unit.present? ? @group.unit.name : "" %></dd>
+  </dl>
+  <% if @group.is_unit %>
+    <p><strong>Preview of Information pane (Displays on <%= t('admin_set_name') %> and Items)</strong></p>
+    <div class="row">
+      <div class="col-sm-4 col-sx-12">
+        <%= render partial: 'shared/show_unit_details', locals: {unit: @group} %>
+      </div>
+    </div>
+  <% end %>
+  <div class="pull-left">
+    <%= link_to 'Back', osul_groups_path, :class => "btn btn-default" %>
+  </div>
+</div>
+
+
+
+

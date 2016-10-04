@@ -1,0 +1,16 @@
+<li>
+  <h2>
+    <%= link_to generic_file.title_or_label, sufia.generic_file_path(generic_file) %>
+    <% if current_user.present? && (current_user.can? :edit, generic_file) %>
+      <small>[<%= link_to 'Download', sufia.download_path(generic_file, file: 'content'), target: '_new' %>]</small>
+    <% end %>
+  </h2>
+  <div class="row">
+    <div class="col-sm-3">
+      <%= render_thumbnail_tag generic_file %>
+    </div>
+    <div class="col-sm-9">
+      <%= render 'shared/attributes', work: generic_file %>
+    </table>
+  </div>
+</li>

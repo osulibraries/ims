@@ -1,0 +1,5 @@
+<h1>Edit <%= t('admin_set_name') %>: <%= @collection.title %> </h1>
+<% form_url = hydra_admin_collection_path %>
+<div class="col-xs-12 col-sm-9">
+  <%= render partial: 'form', locals: {form_url: form_url} %>
+</div>

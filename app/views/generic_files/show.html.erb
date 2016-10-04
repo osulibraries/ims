@@ -1,0 +1,98 @@
+<% content_for(:twitter_meta) do %>
+    <%
+       tweeter = User.find_by_user_key(@generic_file.depositor).twitter_handle
+       tweeter = tweeter.present? ? "@#{tweeter}" : t('sufia.product_twitter_handle') %>
+    <meta name="twitter:card" content="product">
+    <meta name="twitter:site" content="<%= t('sufia.product_twitter_handle') %>"/>
+    <meta name="twitter:creator" content="<%= tweeter %>"/>
+    <meta property="og:site_name" content="<%= t('sufia.product_name') %>"/>
+    <meta property="og:type" content="object"/>
+    <meta property="og:title" content="<%= @generic_file.title.first %>"/>
+    <meta property="og:description" content="<%= @generic_file.description.first.truncate(200) rescue @generic_file.title.first %>"/>
+    <meta property="og:image" content="<%= sufia.download_url(@generic_file, datastream_id: 'thumbnail') %>"/>
+    <meta property="og:url" content="<%= sufia.generic_file_url(@generic_file) %>"/>
+    <meta name="twitter:data1" content="<%= @generic_file.tag.join(', ') %>"/>
+    <meta name="twitter:label1" content="Keywords"/>
+    <meta name="twitter:data2" content="<%= @generic_file.rights.first %>"/>
+    <meta name="twitter:label2" content="Rights"/>
+<% end %>
+
+<% content_for(:gscholar_meta) do %>
+    <meta name="citation_title" content="<%= @generic_file.title.first %>"/>
+    <% @generic_file.creator.each do |creator| %>
+        <meta name="citation_author" content="<%= creator %>"/>
+    <% end %>
+    <meta name="citation_publication_date" content="<%= @generic_file.date_created.first %>"/>
+    <meta name="citation_pdf_url" content="<%= sufia.download_url(@generic_file) %>"/>
+    <!-- Sufia does not yet support these metadata -->
+    <!--
+      <meta name="citation_journal_title" content=""/>
+      <meta name="citation_volume" content=""/>
+      <meta name="citation_issue" content=""/>
+      <meta name="citation_firstpage" content=""/>
+      <meta name="citation_lastpage" content=""/>
+    -->
+<% end %>
+
+<%= javascript_include_tag 'https://s7.addthis.com/js/250/addthis_widget.js#pubid=ra-4ff1d986721ebb24' %>
+
+<%= javascript_tag do %>
+    var addthis_config = {"data_track_addressbar":true};
+    initialize_audio();
+<% end %>
+
+<%= render_breadcrumbs builder: Sufia::BootstrapBreadcrumbsBuilder %>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-xs-12 col-sm-4">
+      <%= render partial: 'generic_files/media_display' %>
+      <%= render partial: 'credit_line' %>
+      <%= render partial: 'show_actions' %>
+      <%= render partial: 'show_admin_sets' %>
+      <%#= render partial: 'show_collections' %>
+      <% if @generic_file.collection.present? %>
+        <%= render partial: 'shared/show_unit_details', locals: {unit: @generic_file.collection.unit_group } %>
+      <% end %>
+    </div>
+    <div itemscope itemtype="<%= @presenter.itemtype %>" class="col-xs-12 col-sm-8">
+      <h1 class="visibility"><%= display_multiple @presenter.title %> <%= render_visibility_badge %></h1>
+      <p class="genericfile_description"><%= display_multiple @presenter.abstract %></p>
+      
+      <%= render partial: 'show_descriptions' %>
+
+      <div class="panel-group" id="detailed_information" role="tablist" aria-multiselectable="true">
+
+        <div class="panel panel-default" id="file_detail_panel">
+          <div class="panel-heading collapsable" role="tab" id="file_detail_heading">
+            <h2 class="panel-title">
+              <a role="button" data-toggle="collapse" href="#file_details" aria-expanded="<%= hidden_details? ? 'false' : 'true' %>" aria-controls="file_details" <%= 'class=collapsed' if hidden_details? %>>
+                File Details
+              </a>
+            </h2>
+          </div>
+          <div id="file_details" class="panel-collapse collapse<%= ' in' unless hidden_details? %>" role="tabpanel" aria-labelledby="file_detail_heading">
+            <div class="panel-body">
+              <%= render partial: 'show_details' %>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel panel-default" id="user_activity_panel">
+          <div class="panel-heading collapsable" role="tab" id="user_activity_heading">
+            <h2 class="panel-title">
+              <a role="button" data-toggle="collapse" href="#user_activity" aria-expanded="<%= hidden_details? ? 'false' : 'true' %>" aria-controls="user_activity" <%= 'class=collapsed' if hidden_details? %>>
+                User Activity
+              </a>
+            </h2>
+          </div>
+          <div id="user_activity" class="panel-collapse collapse<%= ' in' unless hidden_details? %>" role="tabpanel" aria-labelledby="user_activity_heading">
+            <div class="panel-body">
+              <%= render partial: 'users/activity_log', locals: {events: @events} %>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /.panel-group -->
+    </div><!-- /columns second -->
+  </div> <!-- /.row -->
+</div><!-- /.container-fluid -->

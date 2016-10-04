@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Import:</strong>
+  <%= @import_field_mapping.import %>
+</p>
+
+<p>
+  <strong>Key:</strong>
+  <%= @import_field_mapping.key %>
+</p>
+
+<p>
+  <strong>Value:</strong>
+  <%= @import_field_mapping.value %>
+</p>
+
+<%= link_to 'Edit', edit_import_field_mapping_path(@import_field_mapping) %> |
+<%= link_to 'Back', import_field_mappings_path %>

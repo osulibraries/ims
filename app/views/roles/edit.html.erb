@@ -1,0 +1,64 @@
+
+  
+<%# Right now devs are managing roles. No editing allowed. %>
+<%# if can? :edit, Role %>
+  <!-- <div class="col-xs-12 col-sm-6"> -->
+  <!-- <h2>Editing Role</h2>
+
+  <div class="well"> -->
+  <%#= bootstrap_form_for @role, :url => role_path(@role) do |f| %>
+      <%#= render partial: 'edit_fields', :locals => {f: f} %>
+        <%#= f.submit "Update" %>
+        <%#= link_to "Cancel", roles_path, {:class => "btn btn-default"} %>
+  <%# end %>
+  <!-- </div> -->
+  <!-- </div> -->
+
+<%# else %>  
+
+  
+<%# end %>
+  
+
+
+<div class="col-xs-12 col-sm-6">
+
+  <h1><%= @role.name %></h1>
+  <h2>Add Role Members </h2>
+
+  <div class="well">
+    <div class="row">
+      
+      <%= bootstrap_form_tag :url => role_users_path(@role) do |f| %>
+        <div class="col-xs-8">
+          <%= f.select('user_key', options_from_collection_for_select(User.all, :user_key, :name), {:include_blank => "Select a User", :class => 'form-control'}) %>
+        </div>
+        <div class="col-xs-4 ">
+          <%= f.submit "Add User", :class => 'btn btn-primary align-with-select' %>
+        </div>
+      <% end %>
+
+    </div>
+        <table class="table table-striped ">
+          <thead>
+          <tr>
+            <th colspan="2">Username</th>
+          </tr>
+          </thead>
+          <tbody>
+          <% @role.users.each do |user| %>
+              <tr>
+                <td><%= user.user_key %>
+                </td>
+                <td>
+                  <% if can? :remove_user, Role %>
+                      <%= button_to "Remove User", remove_role_users_path(@role), params: {user_key: user.user_key}, :method => :delete, :class => 'btn btn-warning' %>
+                  <% end %>
+                </td>
+              </tr>
+          <% end %>
+          </tbody>
+        </table>
+        <%= link_to "Cancel", roles_path, {:class => "btn btn-default"} %>
+        </div>
+</div>

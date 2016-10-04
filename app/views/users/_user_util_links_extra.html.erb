@@ -1,0 +1,20 @@
+<% # Overwrite this view in your application to insert app specific links to  %>
+<% # render on the user utility button using the sample HTML shown below  %>
+<% #  %>
+<% # <li><%= link_to 'text', 'path', id: 'extra_nav_link' </li>  %>
+<% if can? :manage, Hydra::Admin::Collection || :manage, Osul::Group || :manage, Role || :manage, Import %>
+  <li class="divider"></li>
+<% end %>
+<% if can? :manage, Hydra::Admin::Collection %>
+  <li><%= link_to "#{t('admin_set_name').pluralize}", hydra_admin_collections_path, id: 'extra_nav_link' %></li>
+<% end %>
+<% if can? :manage, Osul::Group %>
+  <li><%= link_to 'User Groups', osul_groups_path, id: 'extra_nav_link' %></li>
+<% end %>
+<% if can? :edit, Role %>
+  <li><%= link_to "Role Management", roles_path %><%#= link_to("Role Management", roles_path) << tag(:br) if can?(:index, Role) %></li>
+<% end %>
+<% if can? :index, Import %>
+  <li><%= link_to "Imports", imports_path %></li>
+<% end %>
+

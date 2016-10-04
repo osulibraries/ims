@@ -1,0 +1,44 @@
+<%#= content_for :sidebar do %>
+
+<div class="row">
+  <div class="col-md-6">
+    <h1><%= t('user_group') %>s</h1>
+  </div>
+  <div class="col-md-6">
+    <%= link_to  new_osul_group_path, :class => 'btn btn-success pull-right' do %>    
+      <span class="glyphicon glyphicon-plus"></span> New
+    <% end %>
+  </div>
+</div>
+
+    
+<%# end %>
+<div class="row">
+  <div class="col-xs-12">
+    <table id="groups-list" class="table table-striped">
+      <thead>
+      <tr>
+        <th class="text-left">Name</th>
+        <th class="text-left">Unit</th>
+        <th class="text-left">Actions</th>
+        <th></th>
+        <th></th>
+      </tr>
+      </thead>
+
+      <tbody>
+      <% @groups.each do |group| %>
+          <tr>
+            <td><%= group.name %></td>
+            <td><%= group.unit.present? ? group.unit.name : "" %>
+            <td><%= link_to 'Show', group %></td>
+            <td><%= link_to 'Edit', edit_osul_group_path(group) %></td>
+            <td><%= link_to 'Destroy', group, method: :delete, data: {confirm: 'Are you sure?'} if current_user.admin? || !group.is_unit %></td>
+          </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+

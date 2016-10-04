@@ -1,0 +1,25 @@
+<% displayed_terms =  @presenter.terms - [:title, :abstract]%>
+<% displayed_terms = displayed_terms - @presenter.internal_only_terms unless can? :edit, @generic_file %>
+
+<h2>Descriptions</h2>
+<dl class="dl-horizontal file-show-term file-show-descriptions">
+  <span class="fields">
+    <% if @generic_file.handle.count > 0 %>
+      <dt>Handle</dt>
+      <dd><%= link_to @generic_file.handle[0], "http://hdl.handle.net/#{@generic_file.handle[0]}" %></dd>
+    <% end %>
+  </span>
+  <% present_terms(@presenter, displayed_terms) do |r, term| %>
+    <% unless r.label(term).casecmp("staff notes").zero? and cannot? :view_full, @generic_file %>
+       <div class="fields">
+          <dt><%= r.label(term) %></dt>
+          <dd><%= r.value(term) %></dd>
+        </div>
+    <% end %>
+  <% end %>
+  </span>
+  <%= render partial: 'show_nested_descriptions', locals: {objs: ["measurements", "materials"]} %>
+</dl>
+<button id="showHiddenFields" type="button" class="is-hidden btn btn-link">
+  Show Hidden Fields
+</button>

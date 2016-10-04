@@ -1,0 +1,145 @@
+<div class="row">
+  <div class="col-md-6">
+  <%= form_for @group, html: {class: 'form-horizontal'} do |f| %>
+    <% if @group.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@group.errors.count, "error") %> prohibited this group from being saved:</h2>
+
+          <ul>
+            <% @group.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+  
+    
+      <div class="well">
+
+          <div class="form-group">
+            <%= f.label :name, class: 'col-xs-4 control-label' %>
+            <div class="col-xs-8">
+              <%= f.text_field :name, class: 'form-control' %>
+            </div>
+          </div>
+          <div class="form-group">
+
+            <%= f.label :description, class: 'col-xs-4 control-label' %>
+            <div class="col-xs-8">
+              <%= f.text_field :description, class: 'form-control' %>
+            </div>
+          </div>
+          <% if current_user.admin? %>
+            <div class="form-group">
+
+              <%= f.label :is_unit, class: 'col-xs-4 control-label' %>
+              <div class="col-xs-8">
+                <%= f.check_box :is_unit, class: 'form-control' %>
+              </div>
+            </div>
+          <% end %>
+          <% if @group.is_unit %>
+            <strong>Contact Information (Displays on <%= t('admin_set_name') %> and Items)</strong>
+              <%= tinymce_assets %>
+              <%= tinymce %>
+              <%= tinymce :alternate %>
+              
+              <%= f.text_area :contact_info, :class => "tinymce", :rows => 20, cols: 60 %>
+            
+          <% else %>
+            <div class="form-group">
+              <%= f.label :unit_id, class: 'col-xs-4 control-label' %>
+              <div class="col-xs-8">
+                <%= f.select :unit_id, @units, include_blank: "Select a Unit...", class: 'form-control' %>
+              </div>
+            </div>
+          <% end %>
+          <div class="row">&nbsp;</div>
+
+          <div class="form-group">
+            <div class="col-sm-offset-4 col-sm-8">
+              <%= f.submit "Save", :class => "btn btn-primary" %>
+              <%= link_to "Cancel", :back, {:class => "btn btn-default"} %>
+            </div>
+          </div>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <% if params[:action] == 'edit' %>
+        
+        <div class="well">
+          <h2>Group Members</h2>
+          <div class="row">
+            <div class="col-xs-8">
+              <%= select_tag(:new_user, options_from_collection_for_select(User.all, :id, :name), {:include_blank => true, :class => 'form-control'}) %>
+            </div>
+            <div class="col-xs-4">
+              <%= f.submit "Add user", :class => "btn btn-primary" %>
+            </div>
+          </div>
+    <% end %>
+  <% end %>
+  
+
+
+  
+  <% if params[:action] == 'edit' %>
+    <%= form_tag update_users_osul_group_path, method: :put do %>
+        <div class="row">
+          <p>&nbsp;</p>
+
+          <div class="col-md-12">
+            <table class="table table-striped ">
+              <thead>
+              <tr>
+                <th class="text-left"><input type="checkbox" class="select-groups"></th>
+                <th class="text-left">Username</th>
+                <th></th>
+              </tr>
+              </thead>
+              <tbody>
+              <% @group.users.each do |user| %>
+                  <tr>
+                    <td><%= check_box_tag "user_ids[]", user.id %></td>
+                    <td><%= user %></td>
+                    <td></td>
+                  </tr>
+              <% end %>
+              </tbody>
+            </table>
+
+            <%= hidden_field_tag 'id', @group.name %>
+            <%= submit_tag "Remove members", :method => :delete, class: "btn btn-danger delete", disabled: true %>
+          </div>
+        </div></div>
+    <% end %>
+
+    <script>
+      (function( $ ){
+        $('.select-groups').change(function () {
+            $('input[id^=user_ids_]').prop('checked', $(this).is(':checked')).trigger('change');
+        })
+
+        $('input[id^=user_ids_]').change(function () {
+            console.log($('input[name="user_ids[]"]:checked').length);
+            console.log(this);
+            if ($(this).is(':checked')) {
+                enableButtons();
+            } else if ($('input[name="user_ids[]"]:checked').length == 0) {
+                disableButtons();
+            }
+        })
+
+        function enableButtons() {
+            $('.delete').removeAttr('disabled');
+        }
+
+        function disableButtons() {
+            $('.delete').attr('disabled', 'disabled');
+        }
+      })( jQuery );
+        
+    </script>
+  <% end %>
+  </div>
+</div>

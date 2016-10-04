@@ -1,0 +1,23 @@
+<%# The container tag
+  - available local variables
+    current_page:  a page object for the currently displayed page
+    num_pages:     total number of pages
+    per_page:      number of items to fetch per page
+    remote:        data-remote
+    paginator:     the paginator that renders the pagination tags inside
+-%>
+<nav>
+  <ul class="pagination">
+    <%= paginator.render do -%> 
+      <li class="<%=current_page.first? ? 'disabled' : nil%>"><%= prev_page_tag %></li>
+      <% each_relevant_page do |page| -%> 
+        <% if page.left_outer? || page.right_outer? || page.inside_window? -%> 
+          <li class="<%= page.current? ? 'disabled active' : nil %>"><%= page_tag page %></li>
+        <% elsif !page.was_truncated? -%> 
+          <li class="disabled"><a href="#" class="disabled"><%= gap_tag %></a></li>
+        <% end -%> 
+      <% end -%> 
+      <li class="<%= current_page.last? ? 'disabled' : nil %>"><%= next_page_tag  %></li>
+    <% end -%>
+  </ul>
+</nav> 

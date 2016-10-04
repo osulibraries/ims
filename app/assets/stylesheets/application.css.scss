@@ -1,0 +1,305 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *  
+ *= require owl.carousel
+ *= require owl.theme
+ *= require chosen_bootstrap
+ *= require dataTables/bootstrap/3/jquery.dataTables.bootstrap
+ *= require_self
+ *= require jquery-ui
+ *= require sufia
+ *= require osul-theme
+ *= require_tree .
+ */
+
+
+#footer{
+  background:none !important;
+}
+.collection_description, .genericfile_description {
+  font-family: "proximanova", Arial, sans-serif !important;
+  letter-spacing: normal !important;
+  font-weight: normal !important;
+}
+a:hover {
+  background-color: transparent;
+}
+a.remove {
+//  background-color: white !important;
+//  border-color: #ccc !important;
+}
+a:visited { color: inherit; }
+
+a.btn.btn-success, a.btn.btn-primary {color: #fff !important;}
+#content-row a {color: #225d62 !important;}
+#content-row a.btn.btn-success, #content-row a.btn.btn-primary,
+#content-row a.btn.btn-danger, #content-row a.btn.btn-warning
+{color: #fff !important;}
+
+.items fieldset.item {
+  margin-bottom: 10px;
+}
+
+.message {
+  color: #bb0000;
+}
+.dropdown.batch_document_selector_all.open a{color:#444;}
+
+#header-row.light .osul-logo {
+  background-size: 60% auto !important;
+}
+#header-row #header-right .subtitle h2 {
+  float: none !important;
+}
+#header-row .header-content {
+  background: rgba(255, 255, 255, 0.6) !important;
+}
+#header-row.header-image-my-custom{
+  height: 300px !important;
+  background:  asset-url('bg-1-header.jpg') no-repeat;
+  background-size: cover;
+  -moz-background-size: cover;
+  -webkit-background-size: cover;
+}
+
+#home_header {
+  background-image: asset-url('old_main_tulips.jpg');
+  background-position: 50% 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-top: 8px solid #E1E1E1;
+  border-bottom: 8px solid #E1E1E1;
+}
+
+@media(max-width:767px) {
+  header.home-page-header .header-content { padding: 150px 15px;}
+}
+
+
+.home_marketing_text h1 {
+  color: #fff !important;
+}
+
+.text-left{
+    text-align: left !important;
+}
+
+
+ul.property-list {
+  display: table;
+  margin: 0 0 20px 0;
+  padding: 0;
+}
+ul.property-list li {
+  display: table-row;
+}
+ul.property-list li > span {
+  display: table-cell;
+  padding: 4px 0;
+}
+ul.property-list li > span:first-child {
+  font-weight: bold;
+  padding-right: 25px;
+}
+
+
+.top-buffer {
+  margin-top: 20px;
+}
+
+
+#facets #facet-panel-collapse .panel-heading h5, 
+#facets #facet-panel-collapse .panel-heading h4{
+  /*padding: 1px 10px 3px 10px !important;*/
+  margin: 2px;
+}
+
+/* this is kind of hack to make the logged in user name look like it is not a link even though it is. Using the Bootstrap methods lost all styling. */
+.navbar-unlink a {
+  cursor: default !important;
+}
+.osul-user-links .btn-group.login_button.pull-right{
+  margin: 8px 0px 0px 0px;
+}
+/* .btn-group.login_button.pull-right*/
+
+.osul-user-links #user_utility_links {
+  margin-top: 8px;
+  float: right;
+}
+.dashboard .panel-default > .dashboard-panel {
+  background-color: #a8c3c5 !important;
+}
+
+th {
+  text-align: left !important;
+}
+
+.well table {
+  background: #fff !important;
+}
+.well table th {
+  background: #bed2d3 !important;
+}
+.well table.table-inherited-permissions {
+  background: inherit;
+}
+
+.align-with-select {
+  margin-top: 25px;
+}
+
+.popover-title {
+  margin-top: 0px !important;
+}
+
+.form-horizontal .popover {
+  width: 276px;
+}
+
+
+/* Required form fields */
+.form-group.required .control-label:before {
+  content:"* ";
+  color:red;
+  font-weight: bold;
+}
+.form-group.required .control-label {
+  font-weight: bold;
+}
+
+/* Dashboard Icons */
+div.col-xs-4.col-sm-2.heading-tile{
+  width: 20%;
+}
+
+span.label{
+  letter-spacing: 0.4px;
+  font-weight: 600;
+}
+
+
+div.heading-tile .glyphicon, div.heading-tile .help-icon, div.heading-tile .glyphicon-chevron-right-helper .chevron, .glyphicon-chevron-right-helper div.heading-tile .chevron {
+  background: #bb0000 !important;
+  color: white  !important;
+  display: block  !important;
+  width: 2em  !important;
+  height: 2em !important;
+  line-height: 1.75em !important;
+  margin: 0 auto !important;
+  border-radius: 50% !important;
+  border: 2px solid white !important;
+  overflow: hidden !important;
+  transition-property: background-color, color !important;
+  transition-duration: .35s !important;
+  transition-timing-function: ease-out !important;
+}
+div.heading-tile:hover .glyphicon, div.heading-tile:hover .help-icon, div.heading-tile:hover .glyphicon-chevron-right-helper .chevron, .glyphicon-chevron-right-helper div.heading-tile:hover .chevron {
+  background-color: white !important;
+  border-color: black !important;
+  color: black !important;
+  transition-property: background-color, color !important;
+  transition-duration: .35s !important;
+  transition-timing-function: ease-out !important;
+}
+/* end Dashboard Icons */
+
+
+
+
+
+/* Sub-DropDown Menu */
+/* From: http://bootsnipp.com/snippets/featured/multi-level-dropdown-menu-bs3 */
+
+.dropdown-submenu {
+    position: relative;
+}
+
+.dropdown-submenu>.dropdown-menu {
+    top: 0;
+    right: 100% !important;
+
+    margin-top: -6px;
+    margin-left: -1px;
+    -webkit-border-radius: 0 6px 6px 6px;
+    -moz-border-radius: 0 6px 6px;
+    border-radius: 0 6px 6px 6px;
+}
+
+.dropdown-submenu:hover>.dropdown-menu {
+    display: block;
+}
+
+/*.dropdown-submenu>a:before {
+    display: block;
+    content: " ";
+    float: left;
+    width: 0;
+    height: 0;
+    border-color: transparent;
+    border-style: solid;
+    border-width: 5px 0 5px 5px;
+    border-left-color: #ccc;
+    margin-top: 5px;
+    margin-right: 5px;
+}
+*/
+
+.dropdown-submenu:hover>a:after {
+    border-left-color: #fff;
+}
+
+.dropdown-submenu.pull-left {
+    float: none;
+}
+
+.dropdown-submenu.pull-left>.dropdown-menu {
+    left: -100%;
+    margin-left: 10px;
+    -webkit-border-radius: 6px 0 6px 6px;
+    -moz-border-radius: 6px 0 6px 6px;
+    border-radius: 6px 0 6px 6px;
+}
+/* end Sub-DropDown Menu */
+
+
+/* Import functionality */
+  div.form-group.hide{
+    display: none
+  }
+
+/* end Import functionality */
+
+/* Collapsable panels */
+.panel-heading.collapsable a:after {
+    font-family:'Glyphicons Halflings';
+    content:"\e114";
+    float: right;
+    color: grey;
+}
+.panel-heading.collapsable a.collapsed:after {
+    content:"\e080";
+}
+#content-row h1.panel-title, #content-row h2.panel-title, #content-row h3.panel-title,
+#content-row h4.panel-title, #content-row h5.panel-title, #content-row h6.panel-title {
+    margin: 0;
+}
+
+.panel-body table:last-child, .panel-body dl:last-child {
+    margin-bottom: 0;
+}
+
+/* pagination */
+.pagination > .active > a{
+    background-color: #D3D3D3 !important;
+  
+}

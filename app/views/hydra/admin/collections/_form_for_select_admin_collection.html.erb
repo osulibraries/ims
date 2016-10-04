@@ -1,0 +1,38 @@
+<div role="dialog" class="modal fade" id="admin-set-list-container" tabindex="-1" aria-labelledby="col_add_title" >
+  <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title" id="col_add_title"><%= t("admin_set.select_form.title") %></h4>
+        </div>
+        
+        <div class="modal-body">
+
+          <% if user_collections.blank? %>
+            <em> <%= t("admin_set.select_form.no_admin_sets") %></em><br><br><br><br>
+          <% else %>
+            <%= t("admin_set.select_form.select_heading") %>
+            <div class="collection-list">
+              <ul>
+                <%# user_collections.sort! { |c1,c2| c1['desc_metadata__date_modified_dtsi'] <=> c2['desc_metadata__date_modified_dtsi'] }  %>
+                <% user_collections.each do |collection| %>
+                  <li> <label for="<%= collection.id %>" class="sr-only">Add to <%= collection.title %></label>
+                    <%= radio_button_tag(:id, collection.id, true, class: "collection-selector") %>
+                    <%= label_tag(:collection, collection.title, "aria-hidden" =>true) %>
+                  </li>
+                <% end %>
+              </ul>
+            </div><!-- collection-list -->
+            <p><%= t("admin_set.select_form.permissions_note").html_safe %></p>
+          <% end %> <!-- else -->
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal"><%= t("sufia.collection.select_form.close")%></button>
+          <% unless user_collections.blank? %>
+            <%= button_to t("admin_set.select_form.update"), admin_set_add_members_path("collection_replace_id"), :type => "submit", :class => 'btn btn-primary submits-batches updates-collection collection-update', :"data-behavior" => "hydra-collections", :id => "hydra-collection-update" %>
+          <% end %> 
+        </div>
+      </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Generic file:</strong>
+  <%= @trashed_item.generic_file_id %>
+</p>
+
+<p>
+  <strong>Depositor:</strong>
+  <%= @trashed_item.depositor %>
+</p>
+
+<%= link_to 'Edit', edit_trashed_item_path(@trashed_item) %> |
+<%= link_to 'Back', trashed_items_path %>

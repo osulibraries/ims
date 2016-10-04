@@ -1,0 +1,25 @@
+<%= form_for(@trashed_item) do |f| %>
+  <% if @trashed_item.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@trashed_item.errors.count, "error") %> prohibited this trashed_item from being saved:</h2>
+
+      <ul>
+      <% @trashed_item.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :generic_file_id %><br>
+    <%= f.text_field :generic_file_id %>
+  </div>
+  <div class="field">
+    <%= f.label :depositor %><br>
+    <%= f.text_field :depositor %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

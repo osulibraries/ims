@@ -1,0 +1,54 @@
+/* Import the fonts */
+@font-face {
+  font-family: 'Glyphicons Halflings';
+  src: font-path('glyphicons-halflings-regular.eot');
+  src: font-path('glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'),
+    font-path('glyphicons-halflings-regular.woff') format('woff'), 
+    font-path('glyphicons-halflings-regular.ttf') format('truetype'), 
+    font-path('glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
+}
+
+
+/* The following two assets brought in from the branding gem weren't showing up for the nav bar because of the asset pipeline. */
+#osu_navbar { background: #eaeaea image-url('osu_navbar/bg-navbar_red.jpg') left bottom repeat-x; }
+#osu_navbar .univ_name a { background: image-url('osu_navbar/osu_name.png') 0 0 no-repeat; }
+
+.full-width #osu_navbar .univ_info { padding-left:15px; }
+.full-width #osu_navbar .univ_links { padding-right:15px; }
+.full-width #osu-navbar-right { width:85%; }
+.full-width #osu-navbar-left { width:15%; }
+
+@media only screen and (min-width: 768px) {
+  .full-width #osu-navbar-right { width:85%; }
+  .full-width #osu-navbar-left { width:15%; }
+}
+
+@media only screen and (max-width: 600px) {
+  #osu_navbar div.links ul li a { text-align:left;}
+  #osu_navbar div.links ul li a.help {background:image-url('osu_navbar/resp-help.png') 0 0 no-repeat;}
+  #osu_navbar div.links ul li a.buckeyelink {background:image-url('osu_navbar/resp-buckeyelink.png') 0 0 no-repeat;}
+  #osu_navbar div.links ul li a.map {background:image-url('osu_navbar/resp-map.png') 0 0 no-repeat;}
+  #osu_navbar div.links ul li a.findpeople {background:image-url('osu_navbar/resp-findpeople.png') 0 0 no-repeat;}
+  #osu_navbar div.links ul li a.webmail {background:image-url('osu_navbar/resp-webmail.png') 0 0 no-repeat;}
+  #osu_navbar div.links ul li a.search {background:image-url('osu_navbar/resp-search.png') 0 0 no-repeat;}
+}
+
+@media only screen and (max-width: 600px) and (-webkit-min-device-pixel-ratio: 2), only screen and (max-width: 600px) and (min--moz-device-pixel-ratio: 2), only screen and (max-width: 600px) and (-o-min-device-pixel-ratio: 2/1), only screen and (max-width: 600px) and (min-device-pixel-ratio: 2) {
+  #osu_navbar .univ_name a {background-image: image-url('osu_navbar/osu_name@2x.png') !important; background-size: contain;}
+  #osu_navbar div.links ul li a.help {background-image:image-url('osu_navbar/resp-help@2x.png') !important;}
+  #osu_navbar div.links ul li a.buckeyelink {background-image:image-url('osu_navbar/resp-buckeyelink@2x.png') !important;}
+  #osu_navbar div.links ul li a.map {background-image:image-url('osu_navbar/resp-map@2x.png') !important;}
+  #osu_navbar div.links ul li a.findpeople {background-image:image-url('osu_navbar/resp-findpeople@2x.png') !important;}
+  #osu_navbar div.links ul li a.webmail {background-image:image-url('osu_navbar/resp-webmail@2x.png') !important;}
+  #osu_navbar div.links ul li a.search {background-image:image-url('osu_navbar/resp-search@2x.png') !important;}
+
+  #osu_navbar div.links ul li a.help, #osu_navbar div.links ul li a.buckeyelink, #osu_navbar div.links ul li a.map, #osu_navbar div.links ul li a.findpeople, #osu_navbar div.links ul li a.webmail, #osu_navbar div.links ul li a.search { -webkit-background-size: 23px; -moz-background-size: 23px; background-size: 23px; }
+}
+
+
+.osu-wordmark { background: image-url('OSU-Wordmark-White.png') no-repeat 50% 50%; }
+.osu-footer { background: image-url('bg-footer.jpg'); }
+
+
+/* Remove missing collapse expand icons to prevent 404 errors */
+a:link.collapsed, a:link.expanded {background-image:none;}

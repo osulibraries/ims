@@ -1,0 +1,29 @@
+<%= form_for(@import_field_mapping) do |f| %>
+  <% if @import_field_mapping.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@import_field_mapping.errors.count, "error") %> prohibited this import_field_mapping from being saved:</h2>
+
+      <ul>
+      <% @import_field_mapping.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :import_id %><br>
+    <%= f.text_field :import_id %>
+  </div>
+  <div class="field">
+    <%= f.label :key %><br>
+    <%= f.text_field :key %>
+  </div>
+  <div class="field">
+    <%= f.label :value %><br>
+    <%= f.number_field :value %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

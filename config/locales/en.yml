@@ -1,0 +1,47 @@
+# Files in the config/locales directory are used for internationalization
+# and are automatically loaded by Rails. If you want to use locales other
+# than English, add the necessary files in this directory.
+#
+# To use the locales, use `I18n.t`:
+#
+#     I18n.t 'hello'
+#
+# In views, this is aliased to just `t`:
+#
+#     <%= t('hello') %>
+#
+# To use a different locale, set it with `I18n.locale`:
+#
+#     I18n.locale = :es
+#
+# This would use the information in config/locales/es.yml.
+#
+# To learn more, please read the Rails Internationalization guide
+# available at http://guides.rubyonrails.org/i18n.html.
+
+en:
+  simple_form:
+    labels:
+      generic_file:
+        alternative: "Alternative Title"
+  activerecord:
+    attributes:
+      import:
+        csv: "CSV"
+  admin_set_name: "Collection"
+  admin_set:
+    select_form:
+      title: "Change Collection"
+      create: "Add to new Collection"
+      update: "Update Collection"
+      no_admin_sets: "You do not have access to any existing Collections."
+      select_heading: "Select the Collection to move your files to:"
+      permissions_note: "<strong>Note:</strong> Changing the Collection of these items will wipe out their current permissions and change them to the new Collection's permissions."
+    show:
+      search_params: "Search Results within this Collection"
+      no_search_params: "Items in this Collection"
+  file:
+    admin_set:
+      visibility_note: "<strong>Note:</strong> This file cannot be more visible than the Collection it is assigned to. "
+  batch_upload:
+    permissions_note: "<strong>Note:</strong> Permissions will also be inherited from the selected Collection."

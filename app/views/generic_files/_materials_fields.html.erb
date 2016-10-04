@@ -1,0 +1,27 @@
+<div class="well">
+<h4>Materials</h4>
+<div id="material-fields" class="form-inline">
+  <div class="items">
+    <%= f.nested_fields_for :materials do |fields| %>
+      <fieldset class="item">
+
+        <div class="form-group">
+          <%= fields.label :material %>
+          <%= fields.text_field :material, class: "form-control generic_file_material" %>
+        </div>
+        <div class="form-group">
+          <%= fields.label 'Type' %>
+          <%= fields.text_field :material_type, class: "form-control generic_file_material_type"  %>
+        </div>
+
+
+        <a href="#" class="remove btn btn-danger"><span class="glyphicon glyphicon-minus"></span> Remove</a>
+
+        <%= fields.hidden_field :id %>
+        <%= fields.hidden_field :_destroy %>
+      </fieldset>
+    <% end %>
+  </div>
+  <a href="#" class="add btn btn-success"><span class='glyphicon glyphicon-plus'></span> Add</a>
+</div>
+</div>
